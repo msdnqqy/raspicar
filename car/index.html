@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script type="text/javascript">
+
+        function post(k){
+            $.post('/',{k:k},function(){})
+        }
+        $(function(){window.onkeydown=click;
+       
+        function click(evn){
+                evn=evn?evn:window.event
+                var code=evn.key;
+                console.log(code);
+                var time2=new Date().getTime();
+                if(time2-time>100){
+                    time=time2
+                    post(code)
+                }
+            }
+            
+            var i=null
+            var dateInter=500
+            var time=new Date().getTime();
+            $('.on2').mousedown(function(e){
+                console.log(e)
+                var className=e.target.className;
+                if(className.indexOf('before')>=0){
+                    var time2=new Date().getTime();
+                    if(time2-time>dateInter){
+                        time=time2
+                        i=setInterval(function(){
+                            post('w')
+                        },100)
+                    }
+                }
+                else if(className.indexOf('left')>=0){
+                    var time2=new Date().getTime();
+                    if(time2-time>dateInter){
+                        time=time2
+                        i=setInterval(function(){
+                            post('a')
+                        },100)
+                    }
+                }
+                else if(className.indexOf('right')>=0){
+                    var time2=new Date().getTime();
+                    if(time2-time>dateInter){
+                        time=time2
+                        i=setInterval(function(){
+                            post('d')
+                        },100)
+                    }
+                }
+                else if(className.indexOf('cabk')>=0){
+                    var time2=new Date().getTime();
+                    if(time2-time>dateInter){
+                        time=time2
+                        i=setInterval(function(){
+                            post('s')
+                        },100)
+                    }
+                }
+            })
+
+            $('.on2').mouseup(function(){
+                clearInterval(i)   
+            })
+
+
+            function touch(e){
+                console.log(e)
+                var className=e.target.className;
+                if(className.indexOf('before')>=0){
+                    var time2=new Date().getTime();
+                    if(time2-time>dateInter){
+                        time=time2
+                        i=setInterval(function(){
+                            post('w')
+                        },100)
+                    }
+                }
+                else if(className.indexOf('left')>=0){
+                    var time2=new Date().getTime();
+                    if(time2-time>dateInter){
+                        time=time2
+                        i=setInterval(function(){
+                            post('a')
+                        },100)
+                    }
+                }
+                else if(className.indexOf('right')>=0){
+                    var time2=new Date().getTime();
+                    if(time2-time>dateInter){
+                        time=time2
+                        i=setInterval(function(){
+                            post('d')
+                        },100)
+                    }
+                }
+                else if(className.indexOf('cabk')>=0){
+                    var time2=new Date().getTime();
+                    if(time2-time>dateInter){
+                        time=time2
+                        i=setInterval(function(){
+                            post('s')
+                        },100)
+                    }
+                }
+            }
+
+            function touchend(e){
+                clearInterval(i)   
+            }
+            $('.on2').on('touchstart', function(e){touch(e)})
+            $('.on2').on('touchend', function(e){touchend(e)})
+            
+        })
+
+        
+    </script>
+    <title>webcar.py</title>
+    <style>
+        #main{width: 750px;height: 750px;background-color: #ccc;margin: auto;margin-top: 250px}
+        #main span{width: 250px;height: 250px;float: left;z-index: 999;}
+        #main span.on2{background-color: #ff00ff}
+    </style>
+    </head>
+
+	<body>
+    <div style="text-align:center;widows: 100%;">
+        <div id="main">
+            <span></span>
+            <span class="on2 before"></span>
+            <span></span>
+            <span class="on2 left"></span>
+
+            <span></span>
+            <span class="on2 right"></span>
+            <span></span>
+            <span class="on2 cabk"></span>
+            <span></span>
+        </div>
+    </div>
+    </body>
+</html>
