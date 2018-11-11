@@ -6,7 +6,7 @@
     <script type="text/javascript">
 
         function post(k){
-            $.post('/',{k:k},function(){})
+            $.post('/',{k:k},function(indatas){console.log(indatas)})
         }
         $(function(){window.onkeydown=click;
        
